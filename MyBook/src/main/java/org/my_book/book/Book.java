@@ -1,43 +1,33 @@
 package org.my_book.book;
 
 import org.my_book.author.Author;
+import org.my_book.book.element.Element;
+import org.my_book.book.element.Section;
 
-import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
-public class Book {
-    private final String title;
+public class Book extends Section {
     private final List<Author> authors = new LinkedList<>();
-    private final List<Chapter> chapters = new ArrayList<>();
-    private TableOfContents tableOfContents;
 
     public Book(String title) {
-        this.title = title;
+        super(title);
     }
 
     public void addAuthor(Author author) {
         authors.add(author);
     }
 
-    public void setTableOfContents(TableOfContents tableOfContents) {
-        this.tableOfContents = tableOfContents;
+    public void addContent(Element element) {
+        super.addElement(element);
     }
 
-    public int createChapter(String chapterName) {
-        Chapter chapter = new Chapter(chapterName);
-        chapters.add(chapter);
-        return chapters.indexOf(chapter);
-    }
-
-    public Chapter getChapter(int index) {
-        return chapters.get(index);
-    }
-
+    @Override
     public void print() {
-        System.out.println("Book: " + title);
+        System.out.println("Book: " + title + '\n');
+        System.out.println("Authors:");
         authors.forEach(Author::print);
-        tableOfContents.print();
-        chapters.forEach(Chapter::print);
+        System.out.println();
+        super.print();
     }
 }

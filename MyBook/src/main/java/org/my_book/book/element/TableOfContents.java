@@ -1,15 +1,15 @@
 package org.my_book.book.element;
 
-public class Image implements Element {
-    private final String url;
+public class TableOfContents implements Element {
+    private Object content;
 
-    public Image(String url) {
-        this.url = url;
+    public TableOfContents(Object content) {
+        this.content = content;
     }
 
     @Override
     public void print() {
-        System.out.println("Image with name: " + url);
+        System.out.println("Table of contents:");
     }
 
     @Override
