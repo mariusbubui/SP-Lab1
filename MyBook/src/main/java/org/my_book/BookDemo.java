@@ -1,31 +1,32 @@
 package org.my_book;
 
-import org.my_book.author.Author;
 import org.my_book.book.Book;
-import org.my_book.book.element.Image;
-import org.my_book.book.element.Paragraph;
 import org.my_book.book.element.Section;
+import org.my_book.book.element.image.ImageProxy;
 
 public class BookDemo {
     public static void main(String[] args) {
-        Book noapteBuna = new Book("Noapte buna, copii!");
-        Author rpGheo = new Author("Radu Pavel Gheo");
-        noapteBuna.addAuthor(rpGheo);
-
-        Section cap1 = new Section("Capitolul 1");
-        Section cap11 = new Section("Capitolul 1.1");
-        Section cap111 = new Section("Capitolul 1.1.1");
-        Section cap1111 = new Section("Subchapter 1.1.1.1");
-        noapteBuna.addContent(new Paragraph("Multumesc celor care ..."));
-        noapteBuna.addContent(cap1);
-        cap1.addElement(new Paragraph("Moto capitol"));
-        cap1.addElement(cap11);
-        cap11.addElement(new Paragraph("Text from subchapter 1.1"));
-        cap11.addElement(cap111);
-        cap111.addElement(new Paragraph("Text from subchapter 1.1.1"));
-        cap111.addElement(cap1111);
-        cap1111.addElement(new Image("Image subchapther 1.1.1.1"));
-
-        noapteBuna.print();
+        long startTime = System.currentTimeMillis();
+        ImageProxy img1 = new ImageProxy("Pamela Anderson");
+        ImageProxy img2 = new ImageProxy("Kim Kardashian");
+        ImageProxy img3 = new ImageProxy("Kirby Griffin");
+        Section playboyS1 = new Section("Front Cover");
+        playboyS1.addElement(img1);
+        Section playboyS2 = new Section("Summer Girls");
+        playboyS2.addElement(img2);
+        playboyS2.addElement(img3);
+        Book playboy = new Book("Playboy");
+        playboy.addContent(playboyS1);
+        playboy.addContent(playboyS2);
+        long endTime = System.currentTimeMillis();
+        System.out.println("Creation of the content took " + (endTime - startTime) + " milliseconds");
+        startTime = System.currentTimeMillis();
+        playboyS1.print();
+        endTime = System.currentTimeMillis();
+        System.out.println("Printing of the section 1 took " + (endTime - startTime) + " milliseconds");
+        startTime = System.currentTimeMillis();
+        playboyS1.print();
+        endTime = System.currentTimeMillis();
+        System.out.println("Printing again the section 1 took " + (endTime - startTime) + " milliseconds");
     }
 }
