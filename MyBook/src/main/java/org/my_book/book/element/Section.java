@@ -1,6 +1,7 @@
 package org.my_book.book.element;
 
 import org.my_book.book.Book;
+import org.my_book.visitor.Visitor;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,5 +35,10 @@ public class Section implements Element {
     @Override
     public Element getElement(int index) {
         return elements.get(index);
+    }
+
+    @Override
+    public void accept(Visitor visitor) {
+        elements.forEach(element -> element.accept(visitor));
     }
 }

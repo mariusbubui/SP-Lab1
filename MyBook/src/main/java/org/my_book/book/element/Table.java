@@ -1,5 +1,7 @@
 package org.my_book.book.element;
 
+import org.my_book.visitor.Visitor;
+
 public class Table implements Element {
     private final String title;
 
@@ -23,5 +25,10 @@ public class Table implements Element {
     @Override
     public Element getElement(int index) {
         return null;
+    }
+
+    @Override
+    public void accept(Visitor visitor) {
+        visitor.visit(this);
     }
 }

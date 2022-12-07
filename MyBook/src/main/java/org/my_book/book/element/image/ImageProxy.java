@@ -1,6 +1,7 @@
 package org.my_book.book.element.image;
 
 import org.my_book.book.element.Element;
+import org.my_book.visitor.Visitor;
 
 public class ImageProxy implements Element {
     private final String url;
@@ -33,5 +34,10 @@ public class ImageProxy implements Element {
     @Override
     public Element getElement(int index) {
         return null;
+    }
+
+    @Override
+    public void accept(Visitor visitor) {
+        visitor.visit(this);
     }
 }

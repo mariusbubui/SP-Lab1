@@ -1,13 +1,14 @@
 package org.my_book;
 
 import org.my_book.book.element.Section;
+import org.my_book.book.element.Table;
+import org.my_book.book.element.image.Image;
+import org.my_book.book.element.image.ImageProxy;
 import org.my_book.book.element.paragraph.Paragraph;
-import org.my_book.book.element.paragraph.align_strategy.AlignCenter;
-import org.my_book.book.element.paragraph.align_strategy.AlignLeft;
-import org.my_book.book.element.paragraph.align_strategy.AlignRight;
+import org.my_book.visitor.BookStatistics;
 
 public class BookDemo {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         Section cap1 = new Section("Capitolul 1");
         Paragraph p1 = new Paragraph("Paragraph 1");
         cap1.addElement(p1);
@@ -17,15 +18,12 @@ public class BookDemo {
         cap1.addElement(p3);
         Paragraph p4 = new Paragraph("Paragraph 4");
         cap1.addElement(p4);
-        System.out.println("Printing without Alignment");
-        System.out.println();
-        cap1.print();
-        p1.setAlignStrategy(new AlignCenter());
-        p2.setAlignStrategy(new AlignRight());
-        p3.setAlignStrategy(new AlignLeft());
-        System.out.println();
-        System.out.println("Printing with Alignment");
-        System.out.println();
-        cap1.print();
+        cap1.addElement(new ImageProxy("ImageOne"));
+        cap1.addElement(new Image("ImageTwo"));
+        cap1.addElement(new Paragraph("Some text"));
+        cap1.addElement(new Table("Table 1"));
+        BookStatistics stats = new BookStatistics();
+        cap1.accept(stats);
+        stats.printStatistics();
     }
 }

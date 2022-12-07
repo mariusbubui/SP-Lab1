@@ -2,6 +2,7 @@ package org.my_book.book.element.paragraph;
 
 import org.my_book.book.element.Element;
 import org.my_book.book.element.paragraph.align_strategy.AlignStrategy;
+import org.my_book.visitor.Visitor;
 
 public class Paragraph implements Element {
     private final String text;
@@ -35,6 +36,11 @@ public class Paragraph implements Element {
     @Override
     public Element getElement(int index) {
         return null;
+    }
+
+    @Override
+    public void accept(Visitor visitor) {
+        visitor.visit(this);
     }
 
     public String getText() {
