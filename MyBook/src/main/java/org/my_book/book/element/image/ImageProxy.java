@@ -19,6 +19,11 @@ public class ImageProxy implements Element {
     }
 
     @Override
+    public String getContent() {
+        return loadImage().getContent();
+    }
+
+    @Override
     public void print() {
         loadImage().print();
     }

@@ -3,15 +3,14 @@ package org.my_book.book.element;
 import org.my_book.visitor.Visitor;
 
 public class TableOfContents implements Element {
-    private Object content;
+    private final String content;
 
-    public TableOfContents(Object content) {
+    public TableOfContents(String content) {
         this.content = content;
     }
 
-    @Override
-    public void print() {
-        System.out.println("Table of contents:");
+    public String getContent() {
+        return content;
     }
 
     @Override
@@ -30,5 +29,10 @@ public class TableOfContents implements Element {
     @Override
     public void accept(Visitor visitor) {
         visitor.visit(this);
+    }
+
+    @Override
+    public void print() {
+        System.out.println("Table of contents:");
     }
 }

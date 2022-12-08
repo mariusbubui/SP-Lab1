@@ -20,7 +20,7 @@ public class BookStatistics implements Visitor {
 
     @Override
     public void visit(Section section) {
-
+        section.getElements().forEach(element -> element.accept(this));
     }
 
     @Override

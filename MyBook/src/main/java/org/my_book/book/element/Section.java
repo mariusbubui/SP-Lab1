@@ -15,11 +15,12 @@ public class Section implements Element {
     }
 
     @Override
-    public void print() {
-        if (!(this instanceof Book)) {
-            System.out.println(title);
-        }
-        elements.forEach(Element::print);
+    public String getContent() {
+        return title;
+    }
+
+    public List<Element> getElements() {
+        return elements;
     }
 
     @Override
@@ -39,6 +40,14 @@ public class Section implements Element {
 
     @Override
     public void accept(Visitor visitor) {
-        elements.forEach(element -> element.accept(visitor));
+        visitor.visit(this);
+    }
+
+    @Override
+    public void print() {
+        if (!(this instanceof Book)) {
+            System.out.println(title);
+        }
+        elements.forEach(Element::print);
     }
 }

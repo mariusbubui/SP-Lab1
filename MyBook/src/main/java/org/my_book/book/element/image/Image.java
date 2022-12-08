@@ -18,6 +18,11 @@ public class Image implements Element {
     }
 
     @Override
+    public String getContent() {
+        return url;
+    }
+
+    @Override
     public void print() {
         System.out.println("Image with name: " + url);
     }

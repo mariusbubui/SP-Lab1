@@ -3,7 +3,6 @@ package org.my_book.book;
 import org.my_book.author.Author;
 import org.my_book.book.element.Element;
 import org.my_book.book.element.Section;
-import org.my_book.visitor.Visitor;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -13,6 +12,10 @@ public class Book extends Section {
 
     public Book(String title) {
         super(title);
+    }
+
+    public List<Author> getAuthors() {
+        return authors;
     }
 
     public void addAuthor(Author author) {

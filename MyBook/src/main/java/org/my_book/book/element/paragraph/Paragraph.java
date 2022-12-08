@@ -12,17 +12,13 @@ public class Paragraph implements Element {
         this.text = text;
     }
 
-    public void setAlignStrategy(AlignStrategy alignStrategy) {
-        this.alignStrategy = alignStrategy;
+    @Override
+    public String getContent() {
+        return text;
     }
 
-    @Override
-    public void print() {
-        if (alignStrategy == null) {
-            System.out.println("Paragraph: " + text);
-        } else {
-            System.out.println("Paragraph: " + alignStrategy.render(this));
-        }
+    public void setAlignStrategy(AlignStrategy alignStrategy) {
+        this.alignStrategy = alignStrategy;
     }
 
     @Override
@@ -43,7 +39,12 @@ public class Paragraph implements Element {
         visitor.visit(this);
     }
 
-    public String getText() {
-        return text;
+    @Override
+    public void print() {
+        if (alignStrategy == null) {
+            System.out.println("Paragraph: " + text);
+        } else {
+            System.out.println("Paragraph: " + alignStrategy.render(this));
+        }
     }
 }
